@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        {%for at in attendance%}
+        sem:{{at.subjects.detail.semester}}
+        year:{{at.subjects.detail.year}}
+        {%if at.user.username == user.username%}
+        <table>
+            <th>
+                <td>Sub</td>
+                <td>Percnt</td>
+            </th>
+            <tr>
+                <td>{{at.subjects.s1}}:</td>
+                <td>{{at.subjects.s2}}:</td>
+            </tr>
+            <tr>
+                <td>{{at.a1}}</td>
+                <td>{{at.a2}}</td>
+            </tr>
+        </table>
+        {%endif%}
+        {%endfor%}
+    </body>
+</html>

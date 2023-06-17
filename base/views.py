@@ -65,9 +65,15 @@ def admin_page(request):
     user = User.objects.get(username=request.user.username)
     form = UserForm(instance=user)
     if request.method == 'POST':
-        form = UserForm(request.POST, instance=user)
+        form = User(request.POST, instance=user)
         if form.is_valid():
             form.save()
             return redirect('home')
     context={'form':form}
     return render(request, 'base/admin_page.html',context)
+
+def profile(request):
+    user = User.objects.get(username=request.user.username)
+    context={'user':user}
+
+    return render(request, 'base/profile.html',context)

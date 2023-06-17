@@ -17,7 +17,7 @@ def login_page(request):
     page='login' 
     context={'page':page}
     if request.method=="POST":
-        username = request.POST.get('username').lower()
+        username = request.POST.get('username')
         password = request.POST.get('password').lower()
         
         try:
@@ -42,7 +42,7 @@ def register_user(request):
         form = MyUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
-            user.username = user.username.lower()
+            user.username = user.username
             user.save()
             login(request, user)
             return redirect('home')

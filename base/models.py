@@ -19,7 +19,6 @@ class Subject(models.Model):
     s1 = models.CharField(max_length=100, null=True)
     s2 = models.CharField(max_length=100, null=True)
     
-
 class Mark(models.Model):
     subjects = models.ForeignKey(Subject, on_delete=models.CASCADE, null=True)
     student_id = models.CharField(max_length=100, null=True)

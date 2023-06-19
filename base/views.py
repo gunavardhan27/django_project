@@ -1,6 +1,8 @@
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth import update_session_auth_hash
 # Create your views here.
 #from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
@@ -63,12 +65,12 @@ def attendance(request):
 
 def admin_page(request):
     user = User.objects.get(username=request.user.username)
-    form = UserForm(instance=user)
-    if request.method == 'POST':
-        form = User(request.POST, instance=user)
-        if form.is_valid():
+    form  = UserForm(instance=user)
+    if request.method=='POST':
+         form = UserForm(request.POST, instance=user)
+         if form.is_valid():
             form.save()
-            return redirect('home')
+            return redirect('prof')
     context={'form':form}
     return render(request, 'base/admin_page.html',context)
 
@@ -77,3 +79,19 @@ def profile(request):
     context={'user':user}
 
     return render(request, 'base/profile.html',context)
+
+def change_password(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)  # Important!
+            messages.success(request, 'Your password was successfully updated!')
+            return redirect('home')
+        else:
+            messages.error(request, 'Please correct the error below.')
+    else:
+        form = PasswordChangeForm(request.user)
+    return render(request, 'base/passwrd.html', {
+        'form': form
+    })

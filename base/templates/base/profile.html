@@ -1,3 +1,6 @@
+
+{%include 'base/err.html'%}
+{%block content%}
 <html>
     <body>
         <div>
@@ -9,7 +12,9 @@
 
         </div>
         <div>
-            <a href="{%url 'admin'%}">update profile</a>
+            <a href="{%url 'admin'%}">update profile</a><hr>
+            <a href="{%url 'cp'%}">update Password</a>
         </div>
     </body>
 </html>
+{%endblock content%}

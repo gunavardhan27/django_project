@@ -1,19 +1,26 @@
-
 {%include 'base/err.html'%}
 {%block content%}
+{% load static %}
 <html>
+    <head>
+        <link rel="stylesheet" href="{%static 'styles/profile.css'%}" me dia="screen"/>
+    </head>
     <body>
-        <div>
-            Student_id = {{user.username}}<hr>
-            Name = {{user.name}}<hr>
-            year = {{user.year}}<hr>
-            semester = {{user.semester}}<hr>
-            course = {{user.course}}<hr>
-
-        </div>
-        <div>
-            <a href="{%url 'admin'%}">update profile</a><hr>
-            <a href="{%url 'cp'%}">update Password</a>
+        <div class="profile">
+            <h2>Student Profile</h2>
+            <p><strong>Student ID:</strong> <span id="student-id">{{user.username}}</span></p>
+            <p><strong>Name:</strong> <span id="student-name">{{user.name}}</span></p>
+            <p><strong>Year:</strong> <span id="student-year">{{user.year}}</span></p>
+            <p><strong>Semester:</strong> <span id="student-semester">{{user.semester}}</span></p>
+            <p><strong>Course:</strong> <span id="student-course">{{user.course}}</span></p>
+            <div class="btn-container">
+                <a href="{%url 'admin'%}">
+                <button class="btn btn-update-profile">update profile</button>
+                </a>
+                <a href="{%url 'cp'%}">
+                <button class="btn btn-update-password">update Password</button>
+                </a>
+            </div>
         </div>
     </body>
 </html>

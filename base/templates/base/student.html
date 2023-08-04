@@ -4,27 +4,54 @@
 {% load static %}
 <html>
     <head>
-        <link rel="stylesheet" href="{%static 'styles/student.css'%}" me dia="screen"/>
+        <link rel="stylesheet" href="{%static 'styles/student.css'%}" media="screen"/>
     </head>
     <body>
         {%for mark in marks%}
         {%if request.user.username == mark.student_id%}
-        year {{mark.subjects.detail.year}}<br>
-        semester{{mark.subjects.detail.semester}}
-        <table>
-            <tr>
-                <th>Subject name</th>
-                <th>Grade</th>
-            </tr>
-            <tr>
-                <td>{{mark.subjects.s1}}</td>
-                <td>{{mark.subjects.s2}}</td>
-            </tr>
-            <tr>
-                <td>{{mark.m1}}</td>
-                <td>{{mark.m2}}</td>
-            </tr>
-        </table>  
+        <div class="container">
+            <div class="card">
+              <div class="card-header">
+                YEAR {{mark.subjects.detail.year}} SEMESTER {{mark.subjects.detail.semester}}
+              </div>
+              <div class="card-body">
+                <div class="result-item">
+                  <div class="subject-card">
+                    <div class="subject">{{mark.subjects.s1}}</div>
+                    <div class="grade">{{mark.m1}}</div>
+                  </div>
+                </div>
+                <div class="result-item">
+                  <div class="subject-card">
+                    <div class="subject">{{mark.subjects.s2}}</div>
+                    <div class="grade">{{mark.m2}}</div>
+                  </div>
+                </div>
+                <div class="result-item">
+                  <div class="subject-card">
+                    <div class="subject">OS</div>
+                    <div class="grade">A-</div>
+                  </div>
+                </div>
+        
+                <div class="result-item">
+                  <div class="subject-card">
+                    <div class="subject">ADS</div>
+                    <div class="grade">A-</div>
+                  </div>
+                </div>
+        
+                <div class="result-item">
+                  <div class="subject-card">
+                    <div class="subject">Mathematics 2</div>
+                    <div class="grade">A-</div>
+                  </div>
+                </div>
+                <!-- Add more result items for other subjects -->
+              </div>
+            </div>
+          </div>
+    
         {%endif%}
         {% endfor %}
     </body>

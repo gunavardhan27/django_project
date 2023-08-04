@@ -1,26 +1,51 @@
 {%include 'base/err.html'%}
 {%block content%}
+{% load static %}
 <!DOCTYPE html>
 <html>
+    <head>
+        <link rel="stylesheet" href="{%static 'styles/attendance.css'%}" me dia="screen"/>
+    </head>
     <body>
         {%for at in attendance%}
-        sem:{{at.subjects.detail.semester}}
-        year:{{at.subjects.detail.year}}
         {%if at.user.username == user.username%}
-        <table>
-            <th>
-                <td>Sub</td>
-                <td>Percnt</td>
-            </th>
-            <tr>
-                <td>{{at.subjects.s1}}:</td>
-                <td>{{at.subjects.s2}}:</td>
-            </tr>
-            <tr>
-                <td>{{at.a1}}</td>
-                <td>{{at.a2}}</td>
-            </tr>
-        </table>
+         
+         
+        <div class="container">
+            <div class="card">
+              <div class="card-header">
+                Attendance YEAR:{{at.subjects.detail.year}} SEMESTER:{{at.subjects.detail.semester}}
+              </div>
+              <div class="card-body">
+                <div class="attendance-item">
+                  <div class="subject">{{at.subjects.s1}}</div>
+                  <div class="percentage">{{at.a1}}</div>
+                
+                  <div class="subject">{{at.subjects.s2}}</div>
+                  <div class="percentage">{{at.a2}}</div>
+        
+        
+                  <div class="subject">OS</div>
+                  <div class="percentage">89%</div>
+                  
+        
+                  <div class="subject">ADS</div>
+                  <div class="percentage">91%</div>
+                 
+        
+                  <div class="subject">Mathematics 2</div>
+                  <div class="percentage">93%</div>
+                  
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+
         {%endif%}
         {%endfor%}
     </body>

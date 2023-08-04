@@ -1,7 +1,11 @@
 {%include 'base/err.html'%}
 <br>
 {%block content%}
+{% load static %}
 <html>
+    <head>
+        <link rel="stylesheet" href="{%static 'styles/student.css'%}" me dia="screen"/>
+    </head>
     <body>
         {%for mark in marks%}
         {%if request.user.username == mark.student_id%}

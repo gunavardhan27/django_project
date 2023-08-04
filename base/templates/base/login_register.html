@@ -1,20 +1,28 @@
 {%include 'base/err.html'%}
 {%block content%}
-{%if page == 'login'%}
-<div>
-    <form method="POST" action="">
-        {% csrf_token %}
-        <label>Username:</label>
-        <input type="text" name="username"/>
-        <label>Password:</label>
-        <input type="password" name="password"/>
-        <input type="submit" value="submit"/>
-    </form>
-    <p>havent signedup yet</p>
-    <a href="{%url 'register'%}">sign up</a>
-</div>
+{%load static%}
+<html>
+    <head>
+        <link rel="stylesheet" href="{%static 'styles/login_register.css'%}" media="screen"/>
+    </head>
+    <body>
+        {%if page == 'login'%}
+<section class="sd">
+    <div class="container">
+        <form method="POST" action="">
+            {% csrf_token %}
+            <label>Username:</label><br>
+            <input type="text" name="username"/><br>
+            <label>Password:</label><br>
+            <input type="password" name="password"/><br>
+            <input type="submit" value="Login" class="btn"/>
+        </form>
+        <h3>havent signedup yet</h3>
+        <h3><a href="{%url 'register'%}">sign up</a></h3>
+    </div>
+</section>
 {%else%}
-<div>
+<div style="background-color: aqua;"class="container">
     <form method="POST" action="">
         {% csrf_token %}
         {{form.as_p}}
@@ -26,4 +34,6 @@
     <a href="{%url 'login_reg'%}">sign in</a>
 </div>
 {%endif%}
+    </body>
+</html>
 {%endblock content%}

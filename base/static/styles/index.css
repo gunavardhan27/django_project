@@ -9,7 +9,7 @@
 body{
     align-items: center;
     min-height: 100vh;
-    background:ulr('/images/2.webp');
+    background-image:url('../images/2.webp');
     background-size: 900px;
     background-position: center;
 }

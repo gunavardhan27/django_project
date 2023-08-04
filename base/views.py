@@ -99,3 +99,7 @@ def change_password(request):
     return render(request, 'base/passwrd.html', {
         'form': form
     })
+
+def notify(request):
+    context = {}
+    return render(request,'base/notification.html' ,context)

@@ -10,5 +10,6 @@ urlpatterns = [
     path('att/',views.attendance,name="at"),
     path('create/',views.admin_page,name='admin'),
     path('myprofile/',views.profile,name='prof'),
-    path('change/',views.change_password,name='cp')
+    path('change/',views.change_password,name='cp'),
+    path('main_page/',views.central,name="main")
 ]

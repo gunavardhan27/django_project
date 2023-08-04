@@ -1,0 +1,24 @@
+@import url();
+  body {
+    font-family: 'Roboto', sans-serif;
+    background: url('../images/mainbg.jpg') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+  
+  
+  .welcome-card {
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-size: 24px;
+    font-family: 'Lobster', cursive;
+  }
+    
+  

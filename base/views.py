@@ -15,6 +15,10 @@ def home(request):
     context = {}
     return render(request, 'base/index.html', context)
 
+def central(request):
+    context={}
+    return render(request,'base/main_page.html', context)
+
 def login_page(request):
     page='login' 
     context={'page':page}
@@ -29,7 +33,7 @@ def login_page(request):
         user = authenticate(request,username=username, password=password)
         if user is not None:
             login(request,user)
-            return redirect('home')
+            return redirect('main')
         else:
             messages.error(request, 'wrong password entered')
     return render(request,'base/login_register.html',context)
@@ -47,7 +51,7 @@ def register_user(request):
             user.username = user.username
             user.save()
             login(request, user)
-            return redirect('home')
+            return redirect('main')
         else:
             messages.error(request, 'user already exists')
     context = {'form':form}

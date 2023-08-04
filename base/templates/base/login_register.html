@@ -1,4 +1,4 @@
-{%include 'base/err.html'%}
+{%include 'base/lerr.html'%}
 {%block content%}
 {%load static%}
 <html>
@@ -22,7 +22,7 @@
     </div>
 </section>
 {%else%}
-<div style="background-color: aqua;"class="container">
+<div class="container">
     <form method="POST" action="">
         {% csrf_token %}
         {{form.as_p}}

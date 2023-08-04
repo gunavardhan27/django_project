@@ -18,16 +18,23 @@ class Subject(models.Model):
     detail = models.ForeignKey(Detail,on_delete=models.CASCADE, null=True)
     s1 = models.CharField(max_length=100, null=True)
     s2 = models.CharField(max_length=100, null=True)
-    
+    s3 = models.CharField(max_length=100, null=True)
+    s4 = models.CharField(max_length=100, null=True)
+    s5 = models.CharField(max_length=100, null=True)
 class Mark(models.Model):
     subjects = models.ForeignKey(Subject, on_delete=models.CASCADE, null=True)
     student_id = models.CharField(max_length=100, null=True)
     m1 = models.CharField(max_length=100, null=True)
     m2 = models.CharField(max_length=100, null=True)
+    m3 = models.CharField(max_length=100, null=True)
+    m4 = models.CharField(max_length=100, null=True)
+    m5 = models.CharField(max_length=100, null=True)
 
 class Attendance(models.Model):
     subjects = models.ForeignKey(Subject, on_delete=models.CASCADE, null=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     a1 = models.CharField(max_length=100, null=True)
     a2 = models.CharField(max_length=100, null=True)
-    
+    a3 = models.CharField(max_length=100, null=True)
+    a4 = models.CharField(max_length=100, null=True)
+    a5 = models.CharField(max_length=100, null=True)

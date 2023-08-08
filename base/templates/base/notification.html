@@ -57,13 +57,17 @@
 <body>
     <h1>Notification Block Example</h1>
     <div class="notification">
-        <strong>Notification:</strong> This is a sample notification block. Replace this text with your actual notification
-        message.
+        <strong>Notification:</strong> {%for note in notes%}
+        {{note.data}}
+        {%endfor%}
     </div>
 
     <div class="important-card">
         <h2>Important Notices</h2>
-        <p>Here are some important notices that you need to be aware of.</p>
+        <p>{%for n in notes%}
+            {{n.image.url}}
+            {%endfor%}
+        </p>
     </div>
 </body>
 

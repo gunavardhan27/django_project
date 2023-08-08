@@ -38,3 +38,8 @@ class Attendance(models.Model):
     a3 = models.CharField(max_length=100, null=True)
     a4 = models.CharField(max_length=100, null=True)
     a5 = models.CharField(max_length=100, null=True)
+
+class Notification(models.Model):
+    image = models.ImageField(blank=True)
+    data = models.TextField(blank=True)
+     

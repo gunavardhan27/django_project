@@ -6,7 +6,7 @@ from django.contrib.auth import update_session_auth_hash
 # Create your views here.
 #from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
-from .models import User, Mark,Attendance
+from .models import User, Mark,Attendance, Notification
 from .forms import UserForm,MyUserCreationForm
 #from django.contrib.auth import authenticate
 #from django.contrib import User
@@ -101,5 +101,6 @@ def change_password(request):
     })
 
 def notify(request):
-    context = {}
+    notes = Notification.objects.all()
+    context = {'notes':notes}
     return render(request,'base/notification.html' ,context)

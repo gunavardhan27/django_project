@@ -1,4 +1,6 @@
 from django.contrib import admin
+from django.conf.urls.static import static
+from django.conf import settings
 from django.urls import path
 from . import views
 urlpatterns = [
@@ -13,4 +15,5 @@ urlpatterns = [
     path('change/',views.change_password,name='cp'),
     path('main_page/',views.central,name="main"),
     path('notify/',views.notify,name="not"),
-]
+    
+] 

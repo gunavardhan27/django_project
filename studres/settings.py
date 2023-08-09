@@ -131,5 +131,5 @@ import mimetypes
 mimetypes.add_type("text/css", ".css", True)
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-MEDIA_ROOT = BASE_DIR/ 'uploads'
-MEDIA_URL = '/images/'
+MEDIA_ROOT = BASE_DIR/'upload'
+MEDIA_URL = 'images/' 

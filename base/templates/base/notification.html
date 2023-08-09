@@ -65,7 +65,7 @@
     <div class="important-card">
         <h2>Important Notices</h2>
         <p>{%for n in notes%}
-            {{n.image.url}}
+            <img src="{{n.image.url}}">
             {%endfor%}
         </p>
     </div>

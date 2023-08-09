@@ -70,8 +70,8 @@ def attendance(request):
 def admin_page(request):
     user = User.objects.get(username=request.user.username)
     form  = UserForm(instance=user)
-    if request.method=='POST':
-         form = UserForm(request.POST, instance=user)
+    if request.method=='POST': 
+         form = UserForm(request.POST, request.FILES, instance=user)
          if form.is_valid():
             form.save()
             return redirect('prof')

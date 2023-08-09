@@ -4,11 +4,10 @@ from django.contrib.auth.models import AbstractUser
 # Create your models here.
 class User(AbstractUser):
     name = models.CharField(max_length=100, null=True)
-    profile_pic = models.ImageField(null=True, default="")
+    profile_pic = models.ImageField(null=True, default="Education Logo.png")
     course = models.CharField(max_length=100, null=True)
     year = models.CharField(max_length=100, null=True)
     semester = models.CharField(max_length=100, null=True)
-    
     
 class Detail(models.Model):
     course = models.CharField(max_length=100, null=True)

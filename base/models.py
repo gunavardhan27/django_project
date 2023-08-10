@@ -52,3 +52,7 @@ class Notification(models.Model):
     image = models.ImageField(blank=True)
     data = models.TextField(blank=True)
      
+class Feed(models.Model):
+    name = models.OneToOneField(User,on_delete=models.CASCADE,null=True)
+    rating = models.PositiveIntegerField(null=True)
+    review = models.TextField(max_length=200, null=True)

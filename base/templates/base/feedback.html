@@ -1,0 +1,17 @@
+{%include 'base/err.html'%}
+{%block content%}
+<form method="POST">
+    {%csrf_token%}
+    {{form.as_p}}
+<button type="submit">submit</button>
+</form>
+<p>Update your Review</p>
+<a href="{%url 'ed'%}">click here</a>
+<div>
+    {% for f in review %}
+    {{f.name.username}}<br>
+    {{f.rating}} stars<br>
+    {{f.review}}<br>
+    {% endfor %}
+</div>
+{%endblock content%}

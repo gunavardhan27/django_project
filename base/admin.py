@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import User,Detail,Mark,Subject,Attendance,Notification
+from .models import User,Detail,Mark,Subject,Attendance,Notification,Feed
 # Register your models here.
 
 class Show(admin.ModelAdmin):
@@ -12,3 +12,4 @@ admin.site.register(Mark)
 admin.site.register(Subject)
 admin.site.register(Attendance)
 admin.site.register(Notification)
+admin.site.register(Feed)

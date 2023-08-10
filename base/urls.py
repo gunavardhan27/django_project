@@ -15,5 +15,6 @@ urlpatterns = [
     path('change/',views.change_password,name='cp'),
     path('main_page/',views.central,name="main"),
     path('notify/',views.notify,name="not"),
-    
+    path('reviews/',views.review,name="rev"),
+    path('edit/',views.edit,name="ed")
 ] 

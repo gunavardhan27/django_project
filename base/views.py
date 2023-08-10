@@ -6,8 +6,9 @@ from django.contrib.auth import update_session_auth_hash
 # Create your views here.
 #from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
-from .models import User, Mark,Attendance, Notification
-from .forms import UserForm,MyUserCreationForm
+from .models import User, Mark,Attendance, Notification,Feed
+from .forms import UserForm,MyUserCreationForm,Feedback
+
 #from django.contrib.auth import authenticate
 #from django.contrib import User
 
@@ -31,6 +32,7 @@ def login_page(request):
         except:
             messages.error(request, 'user doesnt exist')
         user = authenticate(request,username=username, password=password)
+
         if user is not None:
             login(request,user)
             return redirect('main')
@@ -68,7 +70,7 @@ def attendance(request):
     return render(request,'base/attendance.html', context)
 
 def admin_page(request):
-    user = User.objects.get(username=request.user.username)
+    user = User.objects.get(username=request.user)
     form  = UserForm(instance=user)
     if request.method=='POST': 
          form = UserForm(request.POST, request.FILES, instance=user)
@@ -104,3 +106,35 @@ def notify(request):
     notes = Notification.objects.all()
     context = {'notes':notes}
     return render(request,'base/notification.html' ,context)
+
+def review(request):
+    
+    #form = Feedback()
+    review = Feed.objects.all()
+    form = Feedback()
+    if request.method=='POST':
+        form = Feedback(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('main')
+    context={'form':form,'review':review}
+    return render(request,'base/feedback.html',context)
+
+def edit(request):
+    my_form = Feed.objects.get(name=request.user)
+    form = Feedback(instance=my_form)
+    if request.method=='GET':
+        if form.is_valid():
+            form.save()
+            messages.success(request,'Review updated')
+            return redirect('main')
+        context = {'form':form}
+        return render(request,'base/editfd.html',context)
+    else:
+        form = Feedback(request.POST,instance=my_form)
+        if form.is_valid():
+            form.save()
+            messages.success(request,'Review updated')
+            return redirect('main')
+        context = {'form':form}
+        return render(request,'base/editfd.html',context)
